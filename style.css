@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Верхняя навигация */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #282828;
+    color: white;
+}
+
+.header .logo img {
+    width: 120px; /* Увеличил размер логотипа */
+}
+
+.header .search-bar {
+    display: flex;
+    flex: 1;
+    max-width: 600px;
+    margin: 0 20px;
+}
+
+.header .search-bar input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd; /* Добавил границу */
+    border-radius: 4px;
+}
+
+.header .search-bar button {
+    padding: 8px 16px;
+    background-color: #eeff00;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Эффект при наведении */
+}
+
+.header .search-bar button:hover {
+    background-color: #c4e600; /* Темнее при наведении */
+}
+
+.header .user-options button {
+    padding: 8px 16px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Основной контент */
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    padding-top: 80px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Сетка видео */
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.video-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Увеличил тень */
+    cursor: pointer;
+    transition: transform 0.3s; /* Эффект при наведении */
+}
+
+.video-card:hover {
+    transform: scale(1.02); /* Увеличение карточки при наведении */
+}
+
+.video-card img {
+    width: 100%;
+    display: block;
+}
+
+.video-info {
+    padding: 10px;
+}
+
+.video-card h3 {
+    font-size: 18px; /* Увеличил размер заголовка */
+    margin: 5px 0;
+}
+
+.video-card p {
+    color: #555;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.stats {
+    color: #888;
+    font-size: 12px;
+}
+
+.video-player {
+    margin: 20px 0;
+}
+
+.video-info {
+    margin: 10px 0;
+}
+
+.video-actions {
+    margin: 10px 0;
+}
+
+.video-actions button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.video-actions button:hover {
+    background-color: #777; /* Цвет при наведении */
+}
+
+.recommended-videos {
+    margin-top: 40px;
+}
+
+.recommended-videos h2 {
+    margin-bottom: 20px;
+}
+
+@keyframes colorChange {
+    0% { background-color: #FF5733; }
+    25% { background-color: #33FF57; }
+    50% { background-color: #3357FF; }
+    75% { background-color: #FF33A6; }
+    100% { background-color: #FF5733; }
+}
+
+.subscribe-button {
+    animation: colorChange 4s infinite;
+    transition: background-color 1s ease;
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
