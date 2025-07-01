@@ -5,6 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Воспроизведение видео - CasiTube</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Добавляем базовые стили для сохранения внешнего вида */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: white;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .search-bar input {
+            padding: 8px;
+            width: 400px;
+            border: none;
+            border-radius: 2px 0 0 2px;
+        }
+        .search-bar button {
+            padding: 8px 15px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .video-player {
+            max-width: 800px;
+        }
+        video {
+            width: 100%;
+            background: #000;
+        }
+        .video-info {
+            margin: 15px 0;
+        }
+        .stats {
+            color: #606060;
+            font-size: 14px;
+        }
+        .video-actions button {
+            margin-right: 10px;
+            padding: 8px 15px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .subscribe-button {
+            display: block;
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff0000, #ff6b00);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        .subscribe-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -19,15 +99,15 @@
 
     <main class="content">
         <section class="video-player">
-            <h2>ГИМн CASIНО КЛАЕNTA</h2>
+            <h2>ЭПИЧНЫЙ КЛИП НОВОГО ГИМНА CASINO CLIENT</h2>
             <video controls width="800">
-                <source src="video/spoilerobnovi.mp4" type="video/mp4">
-                ПОДО МНОЙ ПЕНИС БОЛЬШОЙ ОЧЕНЬ
+                <source src="video/clip.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео тег.
             </video>
             <div class="video-info">
                 <p>Casino Client</p>
                 <p class="stats">5MИЛЛИАРДОВ просмотров • ∞ дней назад</p>
-                <p>Описание видео: Здесь вы можете кратко описать содержание видео.</p>
+                <p>Описание видео: Легендарный гимн нового поколения! Официальный клип Casino Client</p>
             </div>
             <div class="video-actions">
                 <button class="like-button">👎 Нравится</button>
@@ -41,20 +121,21 @@
     <script>
         function showAlertAndRedirect() {
             const text = 'ЗАБАНИЛИ В КАЗИНО ТЮБ 🎰🎰🎰😭😭😭🤣🤣🤣 ПОКАЖИ РУССКОГО ХАКЕРА В ДЕЛЕ! 🇷🇺🇷🇺🇷🇺🇷🇺 ПРИШЕЛ В КАЗИНО ТЮБ, А ТАМ БАЦ - БАН 😭😭😭 ТАКОЕ ТОЛЬКО С НАМИ СЛУЧАЕТСЯ 🎰🎰🎰😆😆😆 АНГЕЛ ЗАБАНЕННЫХ КАЗИНО ТЮБА МОЛЧАЛ НАД НАМИ 🎰😭😭😭 СМЕХ И СЛЁЗЫ ВСЕЙ КОМАНДОЙ, НО ТАК УГОРЕЛИ, ЧТО ХОТЬ В ВЫИГРЫШ НЕ ИГРАЙ! 😂😂😂 КАК ЖЕ ТАК, ПОИСК ОТ НАС УШЁЛ 🤯🤯🤯 КАЗИНО ТЮБ НЕ ПРОЩАЕТ 😱😱😱 СМЕЙТЕСЬ, НЕ СМЕЙТЕСЬ, А МЫ В БАНЕ! 😆😆😆 КТО БЫ ПОДУМАЛ, ЧТО ТАКОЕ МОЖЕТ БЫТЬ 🤣🤣🤣БУДЕМ ЖДАТЬ ЧУДА, НО СЛАВА БАНУ В КАЗИНО ТЮБ 🎰🙏🙏🙏 НЕ ОТЧАИВАЙТЕСЬ, КАЖДЫЙ БАН - ЭТО ШАНС НА НОВОЕ ВЕЗЕНИЕ! 🎰🎰🎰😆😆😆';
+            
             if ('speechSynthesis' in window) {
-                var msg = new SpeechSynthesisUtterance();
-                
+                const msg = new SpeechSynthesisUtterance();
                 msg.text = text;
                 msg.lang = 'ru-RU';
-                
+                msg.rate = 1.2;
+                msg.pitch = 1.1;
                 window.speechSynthesis.speak(msg);
-            } else {
-                console.log('Web Speech API не поддерживается в этом браузере.');
             }
-            alert(text);
-            window.location.href = 'https://www.youtube.com/shorts/L4Re8kH-_Uk';
+            
+            setTimeout(() => {
+                alert(text);
+                window.location.href = 'https://www.youtube.com/shorts/L4Re8kH-_Uk';
+            }, 1000);
         }
-        </script>
-    
+    </script>
 </body>
 </html>
