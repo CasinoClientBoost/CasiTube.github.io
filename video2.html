@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Воспроизведение видео - CasiTube</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="images/CasiTube.png" alt="CasiTube" />
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Поиск" />
+            <button>Найти</button>
+        </div>
+    </header>
 
+    <main class="content">
+        <section class="video-player">
+            <h2>ГИМн CASIНО КЛАЕNTA</h2>
+            <video controls width="800">
+                <source src="video/spoilerobnovi.mp4" type="video/mp4">
+                ПОДО МНОЙ ПЕНИС БОЛЬШОЙ ОЧЕНЬ
+            </video>
+            <div class="video-info">
+                <p>Casino Client</p>
+                <p class="stats">5MИЛЛИАРДОВ просмотров • ∞ дней назад</p>
+                <p>Описание видео: Здесь вы можете кратко описать содержание видео.</p>
+            </div>
+            <div class="video-actions">
+                <button class="like-button">👎 Нравится</button>
+                <button class="dislike-button" onclick="showAlertAndRedirect()">👍 Не нравится</button>
+                <button class="subscribe-button">
+                    ПОДПИСОЧНАЯ БОМБА!🔥🔥🔥🔥🔥🔥🔥 КНОПКА С ПОДПИСОЧКОЙ ЗОВЁТ ТЕБЯ!!😂😂😂😂😂 НАЖМИ НА НЕЁ — И СТАНЕТЕ ЕЩЁ КРУЧЕ!😎😎😎😎😎🇷🇺🇷🇺🇷🇺 ЭТУ КНОПКУ ПРЯМ ВИДНО СРАЗУ — РУССКАЯ МОЩЬ В ДЕЙСТВИИ!✌️✌️✌️ ОМЕРИКА ТАКОГО НЕ ВИДЕЛА!!👎🏻👎🏻👎🏻👎🏻🇺🇸🇺🇸🇺🇸 ЭТА ПОДПИСКА ПРИВЕДЕТ ТЕБЯ К РЖАКЕ НА ВСЕ 1000!!!🤣🤣🤣🤣🤣🤣🤣 ВСЯ СТРАНА СМОТРИТ И ЖДЁТ, КОГДА ЖЕ ТЫ УДАРИШЬ ПО КНОПКЕ!👍🏻👍🏻👍🏻👍🏻👍🏻 КАТАЕМСЯ ОТ СМЕХА!😂😂😂 ВСЯ МАРШРУТКА В ШОКЕ, КАКАЯ ПОДПИСКА!🤣🤣🤣 НАЖМИ И ПОЛУЧИ ВЕСЕЛЬЕ НА ВЕЧНОСТЬ!💥💥💥 УХ, ТАКАЯ ЖАРА ТОЛЬКО У НАС!</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showAlertAndRedirect() {
+            const text = 'ЗАБАНИЛИ В КАЗИНО ТЮБ 🎰🎰🎰😭😭😭🤣🤣🤣 ПОКАЖИ РУССКОГО ХАКЕРА В ДЕЛЕ! 🇷🇺🇷🇺🇷🇺🇷🇺 ПРИШЕЛ В КАЗИНО ТЮБ, А ТАМ БАЦ - БАН 😭😭😭 ТАКОЕ ТОЛЬКО С НАМИ СЛУЧАЕТСЯ 🎰🎰🎰😆😆😆 АНГЕЛ ЗАБАНЕННЫХ КАЗИНО ТЮБА МОЛЧАЛ НАД НАМИ 🎰😭😭😭 СМЕХ И СЛЁЗЫ ВСЕЙ КОМАНДОЙ, НО ТАК УГОРЕЛИ, ЧТО ХОТЬ В ВЫИГРЫШ НЕ ИГРАЙ! 😂😂😂 КАК ЖЕ ТАК, ПОИСК ОТ НАС УШЁЛ 🤯🤯🤯 КАЗИНО ТЮБ НЕ ПРОЩАЕТ 😱😱😱 СМЕЙТЕСЬ, НЕ СМЕЙТЕСЬ, А МЫ В БАНЕ! 😆😆😆 КТО БЫ ПОДУМАЛ, ЧТО ТАКОЕ МОЖЕТ БЫТЬ 🤣🤣🤣БУДЕМ ЖДАТЬ ЧУДА, НО СЛАВА БАНУ В КАЗИНО ТЮБ 🎰🙏🙏🙏 НЕ ОТЧАИВАЙТЕСЬ, КАЖДЫЙ БАН - ЭТО ШАНС НА НОВОЕ ВЕЗЕНИЕ! 🎰🎰🎰😆😆😆';
+            if ('speechSynthesis' in window) {
+                var msg = new SpeechSynthesisUtterance();
+                
+                msg.text = text;
+                msg.lang = 'ru-RU';
+                
+                window.speechSynthesis.speak(msg);
+            } else {
+                console.log('Web Speech API не поддерживается в этом браузере.');
+            }
+            alert(text);
+            window.location.href = 'https://www.youtube.com/shorts/L4Re8kH-_Uk';
+        }
+        </script>
+    
+</body>
+</html>
