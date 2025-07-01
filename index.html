@@ -3,33 +3,578 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CasiTube</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CasiTube - Виртуальный видеохостинг</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a2c3d;
+            --secondary: #e9b949;
+            --accent: #d43346;
+            --light: #f5f7fa;
+            --dark: #0d1721;
+            --gray: #a1a8b3;
+            --success: #4caf50;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0d1721 0%, #1a2c3d 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(13, 23, 33, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .search-bar {
+            display: flex;
+            flex: 1;
+            max-width: 600px;
+            margin: 0 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 30px 0 0 30px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: #c11e32;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+        }
+
+        .btn-login {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-login:hover {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-register {
+            background: var(--accent);
+            color: var(--light);
+        }
+
+        .btn-register:hover {
+            background: #c11e32;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 51, 70, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 60px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--light);
+            text-shadow: 0 0 15px rgba(233, 185, 73, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            background: rgba(13, 23, 33, 0.7);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--light);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(26, 44, 61, 0.6);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(26, 44, 61, 0.8);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(233, 185, 73, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--secondary);
+            font-size: 32px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Videos Section */
+        .content {
+            padding: 40px 0;
+        }
+
+        .content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--light);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: rgba(26, 44, 61, 0.6);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            background: rgba(26, 44, 61, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+
+        .video-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        /* Server Time Banner */
+        .server-time {
+            text-align: center;
+            padding: 40px 20px;
+            margin: 50px 0;
+            background: rgba(192, 57, 43, 0.3);
+            border-radius: 15px;
+            border: 2px solid #c0392b;
+            position: relative;
+        }
+
+        .server-time::after {
+            content: "⚠️ ВАЖНО! ⚠️";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #c0392b;
+            padding: 5px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .server-time h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f1c40f;
+        }
+
+        .time-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            color: #f39c12;
+            border: 2px solid #e74c3c;
+        }
+
+        .time-note {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+            line-height: 1.7;
+            color: #f5b7b1;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(5, 12, 18, 0.95);
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .search-bar {
+                order: 3;
+                margin: 10px 0;
+                max-width: 100%;
+            }
+            
+            .hero {
+                padding: 140px 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .auth-buttons {
+                margin-left: auto;
+            }
+            
+            .features {
+                padding: 40px 0;
+            }
+            
+            .server-time h2 {
+                font-size: 1.8rem;
+            }
+            
+            .time-display {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 30px;
+            }
+            
+            .btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            
+            .hero {
+                padding: 120px 0 30px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .server-time::after {
+                font-size: 1.2rem;
+                padding: 3px 15px;
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .feature-card:nth-child(1) {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .feature-card:nth-child(2) {
+            animation: float 6s ease-in-out 1s infinite;
+        }
+
+        .feature-card:nth-child(3) {
+            animation: float 6s ease-in-out 2s infinite;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <img src="images/CasiTube.png" alt="CasiTube" />
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Поиск" />
-            <button>Найти</button>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMTAwIj48cGF0aCBmaWxsPSIjZTliOTQ5IiBkPSJNNDAgMjAgSDEwIFYzMCBINDAgVjIwIFogTTQwIDQwIEgxMCBWNTAgSDQwIFY0MCBaIE00MCA2MCBIMTAgVjcwIEg0MCBWNjAgWiBNNjAgMjAgSDcwIFYzMCBINjAgVjIwIFogTTYwIDQwIEg3MCBWNTAgSDYwIFY0MCBaIE02MCA2MCBMNzAgNjAgTDcwIDcwIEw2MCA3MCBMNjAgNjAgWiBNODAgMjAgTDkwIDIwIEw5MCAzMCBMODAgMzAgTDgwIDIwIFogTTgwIDQwIEw5MCA0MCBMOTAgNTAgTDgwIDUwIEw4MCA0MCBaIE04MCA2MCBMMTQwIDYwIEwxNDAgNzAgTDgwIDcwIEw4MCA2MCBaIE0xNTAgMjAgTDE2MCAyMCBMMTYwIDMwIEwxNTAgMzAgTDE1MCAyMCBaIE0xNTAgNDAgTDE2MCA0MCBMMTYwIDUwIEwxNTAgNTAgTDE1MCA0MCBaIE0xNTAgNjAgTDE2MCA2MCBMMTYwIDcwIEwxNTAgNzAgTDE1MCA2MCBaIE0xODAgMjAgTDE5MCAyMCBMMTkwIDMwIEwxODAgMzAgTDE4MCAyMCBaIE0xODAgNDAgTDE5MCA0MCBMMTkwIDUwIEwxODAgNTAgTDE4MCA0MCBaIE0xODAgNjAgTDE5MCA2MCBMMTkwIDcwIEwxODAgNzAgTDE4MCA2MCBaIE0yMDAgMjAgTDIxMCAyMCBMMjEwIDMwIEwyMDAgMzAgTDIwMCAyMCBaIE0yMDAgNDAgTDIxMCA0MCBMMjEwIDUwIEwyMDAgNTAgTDIwMCA0MCBaIE0yMDAgNjAgTDI0MCA2MCBMMjQwIDcwIEwyMDAgNzAgTDIwMCA2MCBaIi8+PC9zdmc+" alt="CasiTube">
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Поиск" />
+                <button>Найти</button>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-login">Войти</button>
+                <button class="btn btn-register">Регистрация</button>
+            </div>
         </div>
     </header>
 
-    <main class="content">
-        <h2>Рекомендации</h2>
-        <section class="videos-grid">
-            <a href="video.html">
-            <div class="video-card">
-                <img src="video-thumbnail.jpg" alt="Thumbnail" />
-                <div class="video-info">
-                    <h3>Гимн Casino Client</h3>
-                    <p>Casino Client</p>
-                    <p class="stats">5MИЛЛИАРДОВ просмотров • ∞ дней назад</p>
+    <section class="hero">
+        <div class="container">
+            <h1>CasiTube</h1>
+            <p>Виртуальный видеохостинг для игрового сообщества. Все видео и функции являются частью игровой симуляции и созданы исключительно для развлечения.</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Почему выбирают CasiTube?</h2>
+                <p>Мы предлагаем уникальный игровой опыт в стиле видеохостинга</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>Эксклюзивный контент</h3>
+                    <p>Только у нас вы найдете уникальные видео, созданные специально для игрового сообщества. Наш контент не имеет аналогов.</p>
                 </div>
-            </div></a>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Мгновенные просмотры</h3>
+                    <p>В нашем игровом мире просмотры начисляются моментально. Никаких настоящих метрик — только фан и фантазия.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Уникальная система работы</h3>
+                    <p>Наши сервера работают по особому графику. Мы гарантируем доступность наших услуг в строго определенное время.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="server-time" style="background-color: rgba(192, 57, 43, 0.3); border-color: rgb(192, 57, 43);">
+            <h2>Расписание работы серверов</h2>
+            <div class="time-display">14:00 _ 14:20</div>
+            <p class="time-note">Наш "сервер" работает только когда я его включаю у себя дома (только с 14:00 до 14:20 по МСК). Это часть игрового антуража и веселья. Реальные видео не загружаются.</p>
         </section>
-    </main>
+    </div>
+
+    <section class="content">
+        <div class="container">
+            <h2>Рекомендации</h2>
+            <section class="videos-grid">
+                <a href="video.html">
+                    <div class="video-card">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzFlMzI0YiIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNlOWI5NDkiPkdJbU4gQ0FTSSBUT1BFPC90ZXh0Pjx0ZXh0IHg9IjUwJSIgeT0iNjAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmNWY3ZmEiPlRodW1ibmFpbCBwcmV2aWV3PC90ZXh0Pjwvc3ZnPg==" alt="Thumbnail" />
+                        <div class="video-info">
+                            <h3>Гимн Casino Client</h3>
+                            <p>Casino Client</p>
+                            <p class="stats">5MИЛЛИАРДОВ просмотров • ∞ дней назад</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#">
+                    <div class="video-card">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzFlMzI0YiIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNlOWI5NDkiPkNhc2lubyBUdWJlIFR1dG9yaWFsPC90ZXh0Pjx0ZXh0IHg9IjUwJSIgeT0iNjAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmNWY3ZmEiPlRodW1ibmFpbCBwcmV2aWV3PC90ZXh0Pjwvc3ZnPg==" alt="Thumbnail" />
+                        <div class="video-info">
+                            <h3>Как использовать CasiTube</h3>
+                            <p>Casino Client</p>
+                            <p class="stats">1.2M просмотров • 3 дня назад</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#">
+                    <div class="video-card">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzFlMzI0YiIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNlOWI5NDkiPlRvcCAxMCBWaWRlb3M8L3RleHQ+PHRleHQgeD0iNTAlIiB5PSI2MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2Y1ZjdmYSI+VGh1bWJuYWlsIHByZXZpZXc8L3RleHQ+PC9zdmc+" alt="Thumbnail" />
+                        <div class="video-info">
+                            <h3>Топ 10 видео месяца</h3>
+                            <p>CasiTube Official</p>
+                            <p class="stats">850K просмотров • 1 неделю назад</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#">
+                    <div class="video-card">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiB2aWV3Qm94PSIwIDAgNDAwIDIyNSI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzFlMzI0YiIvPjx0ZXh0IHg9IjUwJSIgeT0iNDUlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNlOWI5NDkiPkdhbWluZyBIaWdobGlnaHRzPC90ZXh0Pjx0ZXh0IHg9IjUwJSIgeT0iNjAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmNWY3ZmEiPlRodW1ibmFpbCBwcmV2aWV3PC90ZXh0Pjwvc3ZnPg==" alt="Thumbnail" />
+                        <div class="video-info">
+                            <h3>Лучшие моменты игровой недели</h3>
+                            <p>Gaming Highlights</p>
+                            <p class="stats">450K просмотров • 2 дня назад</p>
+                        </div>
+                    </div>
+                </a>
+            </section>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>Этот сайт является частью игрового проекта и предназначен исключительно для развлечения. Все "видео", "комментарии" и "подписки" являются элементами игрового процесса и не имеют отношения к реальному видеохостингу.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
