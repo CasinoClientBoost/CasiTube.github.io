@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Воспроизведение видео - CasiTube</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Добавляем базовые стили для сохранения внешнего вида */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: white;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .search-bar input {
+            padding: 8px;
+            width: 400px;
+            border: none;
+            border-radius: 2px 0 0 2px;
+        }
+        .search-bar button {
+            padding: 8px 15px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .video-player {
+            max-width: 800px;
+        }
+        video {
+            width: 100%;
+            background: #000;
+        }
+        .video-info {
+            margin: 15px 0;
+        }
+        .stats {
+            color: #606060;
+            font-size: 14px;
+        }
+        .video-actions button {
+            margin-right: 10px;
+            padding: 8px 15px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .subscribe-button {
+            display: block;
+            margin-top: 15px;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff0000, #ff6b00);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        .subscribe-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="images/CasiTube.png" alt="CasiTube" />
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Поиск" />
+            <button>Найти</button>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="video-player">
+            <h2>ЭТО СЛУЧИЛОСЬ! ОБНОВЛЕНИЕ CASINO CLIENT ТРЕЙЛЕР</h2>
+            <video controls width="800">
+                <source src="https://github.com/CasinoClientBoost/CasiTube.github.io/releases/download/update/newupdate.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео тег.
+            </video>
+            <div class="video-info">
+                <p>Casino Client</p>
+                <p class="stats">5MИЛЛИАРДОВ просмотров • ∞ дней назад</p>
+                <p>Описание видео: Легендарный гимн нового поколения! Официальный клип Casino Client</p>
+            </div>
+            <div class="video-actions">
+                <button class="like-button">👎 Нравится</button>
+                <button class="dislike-button" onclick="showAlertAndRedirect()">👍 Не нравится</button>
+                <button class="subscribe-button">
+                    ПОДПИСОЧНАЯ БОМБА!🔥🔥🔥🔥🔥🔥🔥 КНОПКА С ПОДПИСОЧКОЙ ЗОВЁТ ТЕБЯ!!😂😂😂😂😂 НАЖМИ НА НЕЁ — И СТАНЕТЕ ЕЩЁ КРУЧЕ!😎😎😎😎😎🇷🇺🇷🇺🇷🇺 ЭТУ КНОПКУ ПРЯМ ВИДНО СРАЗУ — РУССКАЯ МОЩЬ В ДЕЙСТВИИ!✌️✌️✌️ ОМЕРИКА ТАКОГО НЕ ВИДЕЛА!!👎🏻👎🏻👎🏻👎🏻🇺🇸🇺🇸🇺🇸 ЭТА ПОДПИСКА ПРИВЕДЕТ ТЕБЯ К РЖАКЕ НА ВСЕ 1000!!!🤣🤣🤣🤣🤣🤣🤣 ВСЯ СТРАНА СМОТРИТ И ЖДЁТ, КОГДА ЖЕ ТЫ УДАРИШЬ ПО КНОПКЕ!👍🏻👍🏻👍🏻👍🏻👍🏻 КАТАЕМСЯ ОТ СМЕХА!😂😂😂 ВСЯ МАРШРУТКА В ШОКЕ, КАКАЯ ПОДПИСКА!🤣🤣🤣 НАЖМИ И ПОЛУЧИ ВЕСЕЛЬЕ НА ВЕЧНОСТЬ!💥💥💥 УХ, ТАКАЯ ЖАРА ТОЛЬКО У НАС!</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showAlertAndRedirect() {
+            const text = 'ЗАБАНИЛИ В КАЗИНО ТЮБ 🎰🎰🎰😭😭😭🤣🤣🤣 ПОКАЖИ РУССКОГО ХАКЕРА В ДЕЛЕ! 🇷🇺🇷🇺🇷🇺🇷🇺 ПРИШЕЛ В КАЗИНО ТЮБ, А ТАМ БАЦ - БАН 😭😭😭 ТАКОЕ ТОЛЬКО С НАМИ СЛУЧАЕТСЯ 🎰🎰🎰😆😆😆 АНГЕЛ ЗАБАНЕННЫХ КАЗИНО ТЮБА МОЛЧАЛ НАД НАМИ 🎰😭😭😭 СМЕХ И СЛЁЗЫ ВСЕЙ КОМАНДОЙ, НО ТАК УГОРЕЛИ, ЧТО ХОТЬ В ВЫИГРЫШ НЕ ИГРАЙ! 😂😂😂 КАК ЖЕ ТАК, ПОИСК ОТ НАС УШЁЛ 🤯🤯🤯 КАЗИНО ТЮБ НЕ ПРОЩАЕТ 😱😱😱 СМЕЙТЕСЬ, НЕ СМЕЙТЕСЬ, А МЫ В БАНЕ! 😆😆😆 КТО БЫ ПОДУМАЛ, ЧТО ТАКОЕ МОЖЕТ БЫТЬ 🤣🤣🤣БУДЕМ ЖДАТЬ ЧУДА, НО СЛАВА БАНУ В КАЗИНО ТЮБ 🎰🙏🙏🙏 НЕ ОТЧАИВАЙТЕСЬ, КАЖДЫЙ БАН - ЭТО ШАНС НА НОВОЕ ВЕЗЕНИЕ! 🎰🎰🎰😆😆😆';
+            
+            if ('speechSynthesis' in window) {
+                const msg = new SpeechSynthesisUtterance();
+                msg.text = text;
+                msg.lang = 'ru-RU';
+                msg.rate = 1.2;
+                msg.pitch = 1.1;
+                window.speechSynthesis.speak(msg);
+            }
+            
+            setTimeout(() => {
+                alert(text);
+                window.location.href = 'https://www.youtube.com/shorts/L4Re8kH-_Uk';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
